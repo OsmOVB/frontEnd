@@ -1,0 +1,40 @@
+h1 {
+    font-size: 50px;
+    color: #a12d34;
+}
+div {
+    background-color: #835656;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+p {
+    font-size: 20px;
+    color: #115d00b4;
+}
+
+section {
+    margin-bottom: 20px;
+    background-color: rgb(48, 117, 117);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.primeiroParagrafo {
+    font-size: 20px;
+    color: #ff7309b4;
+}
+
+.segundoParagrafo {
+    font-size: 20px;
+    color: #ff0000b4;
+}
+
+.container {
+    padding: 8px;
+    margin: 20px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #000000;
+    
+}
