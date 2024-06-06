@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./ToDoList.css";
-
-
+import { useNavigate } from "react-router-dom";
 
 const ListItem = ({ toDoItem, onDelete, OnDone }) => {
+
   return (
     <div
       className="listItem"
@@ -24,10 +24,11 @@ const ListItem = ({ toDoItem, onDelete, OnDone }) => {
   );
 };
 
-function ToDoList({ pageTitle }) {
+export function ToDoList({ pageTitle }) {
   const [toDoList, setToDoList] = useState([]);
   const [inputValue, setInputValue] = useState();
   const [id, setId] = useState(0);
+  const navigate = useNavigate();
 
   const onInputChange = (e) => {
     console.log(e.target.value);
@@ -76,8 +77,9 @@ function ToDoList({ pageTitle }) {
           />
         ))}
       </div>
+      <button onClick={() => navigate(-1) }>Voltar</button>
     </div>
   );
 }
 
-export default ToDoList;
+
