@@ -1,16 +1,10 @@
 import "./App.css";
-import { SimulateApi } from "./pages/SimulateApi";
-import ToDoList from "./pages/ToDoList";
-import { UseEffect } from "./pages/USeEffect";
-
+import { Timer } from "./pages/Timer";
 function App() {
   return (
-    <div
-
-    >
-      {/* <ToDoList pageTitle="Lista de Tarefas" />s
-      <UseEffect /> */}
-      <SimulateApi />
+    <div>
+      <Timer />
+    
     </div>
   );
 }
