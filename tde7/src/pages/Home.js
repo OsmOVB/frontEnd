@@ -1,0 +1,18 @@
+///home - Deverá exibir uma lista de usuários fictícios com nome e id.
+// Deverá possibilitar o acesso a página /about e a página /user, 
+//passando o ID do usuário que deseja visualizar via rota
+import { Link, useNavigate } from "react-router-dom";
+
+export const Home = () => {
+    const navigate = useNavigate();
+  return (
+    <div>
+      <h1>Home</h1>
+      <button onClick={() => navigate("/list")}>Lista de Hobs</button>
+      <button onClick={() => navigate("/profile")}>Perfil</button>
+      <Link to="/list">Lista</Link>
+      <Link to="/profile">Perfil</Link>
+
+    </div>
+  );
+};
