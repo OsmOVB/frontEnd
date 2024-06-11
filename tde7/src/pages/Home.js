@@ -22,9 +22,9 @@ https://reactrouter.com/en/main/route/error-element
 https://reactrouter.com/en/main/start/tutorial#handling-not-found-errors
 */
 import { Link, useNavigate } from "react-router-dom";
-
 export const Home = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  let { userId } = useParams();
   return (
     <div>
       <h1>Home</h1>

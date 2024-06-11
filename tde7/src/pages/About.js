@@ -5,7 +5,7 @@ export const About = () => {
     const navigate = useNavigate();
   return (
     <div>
-      <h1>Home</h1>
+      <h1>Sobre</h1>
       <button onClick={() => navigate("/")}>Home</button>
     </div>
   );
