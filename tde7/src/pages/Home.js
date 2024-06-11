@@ -24,7 +24,7 @@ https://reactrouter.com/en/main/start/tutorial#handling-not-found-errors
 import { Link, useNavigate } from "react-router-dom";
 export const Home = () => {
   const navigate = useNavigate();
-  let { userId } = useParams();
+  // let { userId } = useParams();
   return (
     <div>
       <h1>Home</h1>
@@ -41,6 +41,7 @@ export const Home = () => {
       </ul>
       <button onClick={() => navigate("/about")}>Sobre</button>
       <button onClick={() => navigate("/user")}>Usuário</button>
+      <button onClick={() => navigate("/pokemon")}>Pokemon</button>
     </div>
   );
 };

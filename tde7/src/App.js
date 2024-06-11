@@ -9,6 +9,7 @@ import { List } from "./pages/List";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { User } from "./pages/User";
+import { Poke } from "./pages/Poke";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
     path: "/user",
     element: <User />,
   },
+  {
+    path: "/pokemon",
+    element: <Poke />,
+
+  }
 
   
 ]);
