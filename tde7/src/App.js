@@ -1,5 +1,4 @@
 import "./App.css";
-import { SimulateApi } from "./pages/SimulateApi";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -8,6 +7,8 @@ import "./index.css";
 import { Profile } from "./pages/Profile";
 import { List } from "./pages/List";
 import { Home } from "./pages/Home";
+import { About } from "./pages/About";
+import { User } from "./pages/User";
 
 const router = createBrowserRouter([
   {
@@ -26,11 +27,11 @@ const router = createBrowserRouter([
 
   {
     path: "/about",
-    element: <SimulateApi />,
+    element: <About />,
   },
   {
     path: "/user",
-    element: <SimulateApi />,
+    element: <User />,
   },
 
   

@@ -28,11 +28,19 @@ export const Home = () => {
   return (
     <div>
       <h1>Home</h1>
-      <button onClick={() => navigate("/list")}>Lista de Hobs</button>
-      <button onClick={() => navigate("/profile")}>Perfil</button>
-      <Link to="/list">Lista</Link>
-      <Link to="/profile">Perfil</Link>
-
+      <ul>
+        <li>
+          <Link to="/user?id=1">Usuário 1</Link>
+        </li>
+        <li>
+          <Link to="/user?id=2">Usuário 2</Link>
+        </li>
+        <li>
+          <Link to="/user?id=3">Usuário 3</Link>
+        </li>
+      </ul>
+      <button onClick={() => navigate("/about")}>Sobre</button>
+      <button onClick={() => navigate("/user")}>Usuário</button>
     </div>
   );
 };
