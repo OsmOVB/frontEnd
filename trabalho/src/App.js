@@ -1,25 +1,27 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Login from './pages/Login';
+import List from './pages/List';
+import Detail from './pages/Detail';
 
-import './App.css';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import { Login } from './pages/Login';
+const App = () => {
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Login />,
-  }
-  
-]);
-
-function App() {
   return (
-    <div>
-    <RouterProvider router={router} />
-  </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login onLogin={setLoggedIn} />} />
+        <Route
+          path="/items"
+          element={loggedIn ? <List /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/items/:id"
+          element={loggedIn ? <Detail /> : <Navigate to="/" />}
+        />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

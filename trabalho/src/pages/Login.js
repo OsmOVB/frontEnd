@@ -1,62 +1,27 @@
-//Tela de login
-// Não precisa ter conexão com a API
-// Input para email e senha
-// Validar se ambos os campos estão preenchidos e a senha possui ao menos 8 caracteres
-// Liberar o botão de acesso ao sistema apenas se as validações forem satisfeitas
+// src/pages/Login.js
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import LoginForm from '../components/LoginForm';
+import '../styles/login.css';
 
-//estilize o formulário de login
-import React, { useState } from "react";
-import "./Login.css";
+const Login = ({ onLogin }) => {
+  const navigate = useNavigate();
 
-export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Email:", email, "Password:", password);
+  const handleLogin = (status) => {
+    if (status) {
+      onLogin(true);
+      navigate('/items');
+    }
   };
 
   return (
-    <div className="login">
-      <h2>Acessar</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="column">
-          <label htmlFor="email">Email</label>
-          <input
-            className="input"
-            type="email"
-            id="email"
-            value={email}
-            onChange={handleEmailChange}
-          />
-        </div>
-        <div className="column">
-          <label htmlFor="password">Senha</label>
-          <input
-            className="input"
-            type="password"
-            id="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </div>
-        <button
-          className="button"
-          type="submit"
-          disabled={email === "" || password.length < 8}
-        >
-          Login
-        </button>
-      </form>
+    <div className="container">
+      <div className="login">
+        <h2>Login</h2>
+        <LoginForm onLogin={handleLogin} />
+      </div>
     </div>
   );
 };
+
+export default Login;
