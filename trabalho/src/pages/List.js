@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import api, { getTypeDetails } from '../api';
-import '../styles/list.css';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import api, { getTypeDetails } from "../api";
+import "../styles/list.css";
 
 const List = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -13,21 +13,26 @@ const List = () => {
     const fetchPokemons = async () => {
       try {
         const offset = (page - 1) * limit;
-        const response = await api.get(`/pokemon?offset=${offset}&limit=${limit}`);
+        const response = await api.get(
+          `/pokemon?offset=${offset}&limit=${limit}`
+        );
         const pokemonDetails = await Promise.all(
           response.data.results.map(async (pokemon) => {
             const details = await api.get(pokemon.url);
             const typeUrl = details.data.types[0]?.type?.url;
             if (typeUrl) {
               const typeDetails = await getTypeDetails(typeUrl);
-              return { ...details.data, typeColor: typeDetails?.name || 'gray' };
+              return {
+                ...details.data,
+                typeColor: typeDetails?.name || "gray",
+              };
             }
-            return { ...details.data, typeColor: 'gray' };
+            return { ...details.data, typeColor: "gray" };
           })
         );
         setPokemons(pokemonDetails);
       } catch (error) {
-        console.error('Erro ao buscar Pokémon', error);
+        console.error("Erro ao buscar Pokémon", error);
       }
     };
 
@@ -35,16 +40,21 @@ const List = () => {
   }, [page]);
 
   const handleLogout = () => {
-    navigate('/');
+    navigate("/");
   };
 
   return (
     <div className="container">
-      <div className="align-header">
-        <button onClick={handleLogout} style={{ alignSelf: 'flex-start' }}>Sair</button>
-        <h2>Lista de Pokémon</h2>
-        <div className="space"></div>
-      </div>
+      <header className="cx-header">
+       
+        <div className="align-header">
+          <div className="space"></div>
+          Pokémon API
+          <button onClick={handleLogout} style={{ alignSelf: "flex-start" }}>
+            Logout
+          </button>
+        </div>
+      </header>
       <ul className="pokemon-list">
         {pokemons.map((pokemon) => (
           <li
@@ -61,9 +71,7 @@ const List = () => {
         <button onClick={() => setPage(page - 1)} disabled={page === 1}>
           Anterior
         </button>
-        <button onClick={() => setPage(page + 1)}>
-          Próximo
-        </button>
+        <button onClick={() => setPage(page + 1)}>Próximo</button>
       </div>
     </div>
   );

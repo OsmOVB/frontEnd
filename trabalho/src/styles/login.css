@@ -1,13 +1,11 @@
-/* src/styles/login.css */
-
 .login {
     display: flex;
+    height: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: #ff7f27;
-    border-radius: 5px;
+    background-color: #f1f1f1;
     color: white;
   }
   
@@ -17,6 +15,10 @@
     gap: 15px;
     width: 100%;
     max-width: 400px;
+    border: 1px solid #ffdec8;
+    border-radius: 5px;
+    background-color: #ff8432;
+    padding: 25px;
   }
   
   label {

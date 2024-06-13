@@ -6,8 +6,7 @@ const LoginForm = ({ onLogin }) => {
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Simulação de login bem-sucedido
+    e.preventDefault();   
     onLogin(true);
   };
 
@@ -30,7 +29,8 @@ const LoginForm = ({ onLogin }) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-
+      {/* passa link no label */}      
+      <label htmlFor="forget" >Esqueceu a senha?</label>
       <button type="submit" disabled={!isFormValid}>Entrar</button>
     </form>
   );

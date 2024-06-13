@@ -1,8 +1,8 @@
-// src/pages/Login.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 import '../styles/login.css';
+import '../styles/global.css';
 
 const Login = ({ onLogin }) => {
   const navigate = useNavigate();
@@ -16,6 +16,7 @@ const Login = ({ onLogin }) => {
 
   return (
     <div className="container">
+      <header className='cx-header'>Pokémon API</header>
       <div className="login">
         <h2>Login</h2>
         <LoginForm onLogin={handleLogin} />
