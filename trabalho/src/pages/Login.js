@@ -32,7 +32,7 @@ const Login = ({ onLogin, isLoggedIn }) => {
         </div>
         <div className="login-container">
           <h2 className="login-title">Login</h2>
-          <p className="login-subtitle">Animes clássicos, filmes épicos e séries sem fim. Está tudo aqui!</p>
+          <p className="login-subtitle">Pokémons e seus detalhes!</p>
           <LoginForm onLogin={handleLogin} />
         </div>
       </div>
