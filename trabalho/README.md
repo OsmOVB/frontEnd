@@ -30,6 +30,4 @@ Este projeto é uma interface de usuário para visualizar informações sobre Po
 ![Tela de Detalhes do Pokémon](public/images/tela-de-detalhes.png)
 
 
-## Licença
 
-Este projeto está licenciado sob a licença MIT.
