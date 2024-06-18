@@ -7,7 +7,7 @@ const List = () => {
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(1);
   const navigate = useNavigate();
-  const limit = 8; // Número de itens por página
+  const limit = 14; // Número de itens por página
 
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -46,32 +46,33 @@ const List = () => {
   return (
     <div className="container">
       <header className="cx-header">
-       
         <div className="align-header">
-          <div className="space"></div>
-          Pokémon API
-          <button onClick={handleLogout} style={{ alignSelf: "flex-start" }}>
-            Logout
-          </button>
+          <div className="logo">Pokémon API</div>
+          <button onClick={handleLogout} className="logout-btn">Logout</button>
         </div>
       </header>
-      <ul className="pokemon-list">
-        {pokemons.map((pokemon) => (
-          <li
-            key={pokemon.name}
-            onClick={() => navigate(`/items/${pokemon.name}`)}
-            style={{ backgroundColor: pokemon.typeColor }}
-          >
-            <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-            <p>{pokemon.name}</p>
-          </li>
-        ))}
-      </ul>
-      <div className="pagination">
-        <button onClick={() => setPage(page - 1)} disabled={page === 1}>
-          Anterior
-        </button>
-        <button onClick={() => setPage(page + 1)}>Próximo</button>
+      <div className="content">
+        <ul className="pokemon-list">
+          {pokemons.map((pokemon) => (
+            <li
+              key={pokemon.name}
+              onClick={() => navigate(`/items/${pokemon.name}`)}
+              className="pokemon-card"
+              style={{ backgroundColor: pokemon.typeColor }}
+            >
+              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+              <div className="pokemon-info">
+                <p className="pokemon-name">{pokemon.name}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div className="pagination">
+          <button onClick={() => setPage(page - 1)} disabled={page === 1}>
+            Anterior
+          </button>
+          <button onClick={() => setPage(page + 1)}>Próximo</button>
+        </div>
       </div>
     </div>
   );

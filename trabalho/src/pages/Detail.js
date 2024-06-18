@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api, { getTypeDetails } from '../api';
 import '../styles/detail.css';
+import '../styles/global.css';
 
 const Detail = () => {
   const { id } = useParams();
   const [pokemon, setPokemon] = useState(null);
-  const [highResImage, setHighResImage] = useState(null);
   const [typeColor, setTypeColor] = useState(null);
   const navigate = useNavigate();
 
@@ -22,42 +22,35 @@ const Detail = () => {
       }
     };
 
-    const fetchHighResImage = async () => {
-      try {
-        const response = await fetch(`https://api.pokemontcg.io/v2/cards?q=name:${id}`);
-        const data = await response.json();
-        if (data.data.length > 0) {
-          setHighResImage(data.data[0].images.large);
-        }
-      } catch (error) {
-        console.error('Erro ao buscar imagem de alta resolução', error);
-      }
-    };
-
     fetchPokemon();
-    fetchHighResImage();
   }, [id]);
 
-  if (!pokemon) return <p>Carregando...</p>;
+  const handleLogout = () => {
+    navigate("/");
+  };
 
   return (
     <div className="container" style={{ backgroundColor: typeColor }}>
-      <div className="header">
-        <button onClick={() => navigate('/items')}>Voltar</button>
-        <h2>Detalhes do Pokémon</h2>
-        <div className="space"></div>
-      </div>
-      <div className="detail">
-        <div className="detail-info">
-          <p><span>Nome:</span> {pokemon.name}</p>
-          <p><span>Altura:</span> {pokemon.height} decímetros</p>
-          <p><span>Peso:</span> {pokemon.weight} hectogramas</p>
-          <p><span>Tipo:</span> {pokemon.types.map((type) => type.type.name).join(', ')}</p>
+      <header className="cx-header">
+        <div className="align-header">
+          <button className="back-button" onClick={() => navigate('/items')}>Voltar</button>
+          <div className="header-title">Detalhes do Pokémon</div>
+          <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
-        {highResImage ? (
-          <img src={highResImage} alt={pokemon.name} />
+      </header>
+      <div className="detail">
+        {pokemon ? (
+          <div className="detail-info">
+            <img src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} className="pokemon-image" />
+            <div className="info-text">
+              <p><span>Nome:</span> {pokemon.name}</p>
+              <p><span>Altura:</span> {pokemon.height} decímetros</p>
+              <p><span>Peso:</span> {pokemon.weight} hectogramas</p>
+              <p><span>Tipo:</span> {pokemon.types.map((type) => type.type.name).join(', ')}</p>
+            </div>
+          </div>
         ) : (
-          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+          <p>Loading...</p>
         )}
       </div>
     </div>

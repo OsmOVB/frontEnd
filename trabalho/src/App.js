@@ -10,7 +10,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login onLogin={setLoggedIn} />} />
+        <Route path="/" element={<Login onLogin={setLoggedIn} isLoggedIn={loggedIn} />} />
         <Route
           path="/items"
           element={loggedIn ? <List /> : <Navigate to="/" />}
